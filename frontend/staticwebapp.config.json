@@ -1,33 +1,26 @@
 {
     "routes": [
-        {
-            "route": "/admin/*",
-            "allowedRoles": [ "admin" ]
-        },
-        {
-            "route": "/authenticated/*",
-            "allowedRoles": [ "authenticated" ]
-        }
+      {
+        "route": "/*",
+        "allowedRoles": ["authenticated"]
+      }
     ],
-    "auth": {
-        "rolesSource": "/api/GetRoles",
-        "identityProviders": {
-            "azureActiveDirectory": {
-                "userDetailsClaim": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                "registration": {
-                    "openIdIssuer": "https://login.microsoftonline.com/<9bc9e1eb-74b2-4fa3-97b5-1aca212bb0a2>",
-                    "clientIdSettingName": "AAD_CLIENT_ID",
-                    "clientSecretSettingName": "AAD_CLIENT_SECRET"
-                },
-                "login": {
-                    "loginParameters": [
-                        "resource=https://graph.microsoft.com"
-                    ]
-                }
-            }
-        }
+    "responseOverrides": {
+      "401": {
+        "statusCode": 302,
+        "redirect": "/.auth/login/aad"
+      }
     },
-    "globalHeaders": {
-        "Cache-Control": "no-cache"
+    "auth": {
+        "identityProviders": {
+          "azureActiveDirectory": {
+            "registration": {
+              "openIdIssuer": "https://login.microsoftonline.com/9bc9e1eb-74b2-4fa3-97b5-1aca212bb0a2/v2.0",
+              "clientIdSettingName": "AZURE_CLIENT_ID",
+              "clientSecretSettingName": "AZURE_CLIENT_SECRET"
+            }
+          }
+        }
     }
-}
+
+  }
