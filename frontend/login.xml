@@ -1,0 +1,26 @@
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="LogIn" />
+    <UserJourneyBehaviors>
+        <JourneyInsights 
+            TelemetryEngine="ApplicationInsights" 
+            InstrumentationKey="7c25e293-8d7e-46c8-9e84-39400c53f1fb"
+            DeveloperMode="true"
+            ClientEnabled="true"
+            ServerEnabled="true"
+            TelemetryVersion="1.0.0" />
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>Log In</DisplayName>
+        <Description>Allows users to log into a client application using their password</Description>
+        <Protocol Name="OpenIdConnect" />
+        <InputClaims>
+            <InputClaim ClaimTypeReferenceId="signInName" />
+        </InputClaims>
+        <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+</RelyingParty>
