@@ -73,7 +73,7 @@
                           "clientSecretSettingName": "B2C_CLIENT_SECRET"
                       },
                       "openIdConnectConfiguration": {
-                          "wellKnownOpenIdConfiguration": "https://projectcenterdev.b2clogin.com/karanorgdatadna.onmicrosoft.com/B2C_1A_SIGNUPORLOGIN/v2.0/.well-known/openid-configuration"
+                          "wellKnownOpenIdConfiguration": "https://karanorgdatadna.b2clogin.com/karanorgdatadna.onmicrosoft.com/B2C_1A_SIGNUPORLOGIN/v2.0/.well-known/openid-configuration"
                       }
                   },
                   "login": {
